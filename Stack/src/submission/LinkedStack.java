@@ -4,7 +4,7 @@ import adt.Stack;
 
 public class LinkedStack<T> implements Stack<T> {
 	private Node top;
-//All methods are O(1) except for toString which is O^2 (like arraystack).
+//All methods are O(1) except for toString which is O(n^2) (like arraystack).
 	@Override
 	public void push(T newEntry) {
 		Node newNode = new Node(newEntry, top);

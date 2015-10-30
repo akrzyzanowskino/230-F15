@@ -7,7 +7,7 @@ public class ArrayStack<T> implements Stack<T> {
 	private int top;
 	private boolean initialized = false;
 	private static final int DEFAULT_CAPACITY = 10;
-//All the methods except toString are O(1), toString is O^2 because it has more than 
+//All the methods except toString are O(1), toString is O(n^2) because it has more than 
 	//one operation to complete in a loop. 
 	
 	public ArrayStack() {

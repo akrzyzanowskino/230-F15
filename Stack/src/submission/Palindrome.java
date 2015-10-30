@@ -4,8 +4,8 @@ import java.util.Stack;
 public class Palindrome {
 	public static boolean isPalindrome(String s) {
 		// I had to look up how to do most of this on google. 
-		// TODO use a stack to determine if s is palindrome
-		//Put the elemets of the string into a stack. Make a new stack and reverse that, if they
+		// Use a stack to determine if s is palindrome
+		// Put the elemets of the string into a stack. Make a new stack and reverse that, if they
 		//are the same then return true. 
 		
 		//make a new stack
