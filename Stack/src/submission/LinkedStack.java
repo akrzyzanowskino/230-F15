@@ -7,31 +7,32 @@ public class LinkedStack<T> implements Stack<T> {
 	
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		Node newNode = new Node(newEntry, top);
+		top = newNode;
 	}
 
 	@Override
 	public T pop() {
-		// TODO Auto-generated method stub
-		return null;
+		T topNode = peek();
+		assert top != null;
+		top = top.next;
+		return topNode;
+		
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		return top.data;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return top == null;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		top = null;
 		
 	}
 	
@@ -59,5 +60,13 @@ public class LinkedStack<T> implements Stack<T> {
 			next = nextNode;	
 		} // end constructor
 	} // end Node
-
+	
+	public static void main(String[] args){
+	LinkedStack<String> g = new LinkedStack<String>();
+	g.push("A");
+	g.push("B");
+	g.push("C");
+	g.pop();
+	System.out.println(g);
+	}
 }

@@ -5,34 +5,46 @@ import adt.Stack;
 public class ArrayStack<T> implements Stack<T> {
 	private T[] data;
 	private int top;
+	private boolean initialized = false;
+	private static final int DEFAULT_CAPACITY = 10;
 
+	
+	public ArrayStack() {
+		data = (T[]) new Object[DEFAULT_CAPACITY];
+	}
+	
+	public ArrayStack(int capacity) {
+		data = (T[]) new Object[capacity];
+	}
+	
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		data[top +1] = newEntry;
+		top++;
 	}
 
 	@Override
 	public T pop() {
-		// TODO Auto-generated method stub
-		return null;
+		T topIndex = data[top];
+		data[top] = null;
+		top--;
+		return topIndex;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		return data[top];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+
+		return top < 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		top = 0;
 		
 	}
 	
@@ -40,8 +52,18 @@ public class ArrayStack<T> implements Stack<T> {
 		String s = "";
 		for (int i = top; i >= 0; i--)
 			s += "| " + data[i] + " |\n";
-		s+= "+++++\n";
+		s+= "+++++";
 		return s;
+	}
+	public static void main(String[] args) {
+		Stack<String> g = new ArrayStack<String>();
+		g.push("A");
+		g.push("B");
+		g.push("C");
+		g.push("D");		
+		g.pop();
+		g.peek();
+		System.out.println(g);
 	}
 
 }
