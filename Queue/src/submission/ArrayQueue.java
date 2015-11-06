@@ -4,35 +4,47 @@ import adt.Queue;
 
 public class ArrayQueue<T> implements Queue<T> {
 	private T[] data;
-	private int head, tail;
+	private int head, tail = 0;
+	private static final int DEFAULT_CAPACITY = 10;
+	
+	public ArrayQueue() {
+		data = (T[]) new Object[DEFAULT_CAPACITY];
+	}
+	
+	public ArrayQueue(int capacity) {
+		data = (T[]) new Object[capacity];
+	}
+	
 	
 	@Override
 	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
+		tail = (tail +1) % data.length;
+		data[tail] = newEntry;
 		
 	}
 
 	@Override
 	public T dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+		T front = data[head];
+		data[head] = null;
+		head = (head + 1) % data.length;
+		return front;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		return data[head];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return head == ((tail + 1) % data.length);
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		head = 0;
+		tail = data.length -1;
 		
 	}
 	
@@ -42,6 +54,15 @@ public class ArrayQueue<T> implements Queue<T> {
 			s += " -> " + data[i];
 		s+= "\n";
 		return s;
+	}
+	
+	public static void main(String[] args) {
+		Queue<String> line = new ArrayQueue<String>();
+		line.enqueue("C");
+		line.enqueue("D");
+		line.dequeue();
+		line.peek();
+		System.out.println(line);
 	}
 
 }

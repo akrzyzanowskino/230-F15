@@ -1,5 +1,6 @@
 package submission;
 
+import LinkedQueue.Node;
 import adt.Queue;
 
 public class LinkedQueue<T> implements Queue<T> {
@@ -7,32 +8,31 @@ public class LinkedQueue<T> implements Queue<T> {
 	
 	@Override
 	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		Node newNode = new Node(newEntry, head);
+		head = newNode;
 	}
 
 	@Override
 	public T dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+		assert head != null;
+		head = head.next;
+		return head.data;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		return head.data;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return (head == null) && (tail ==null);
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		head = null;
+		tail = null;
 	}
 	
 	public String toString() {
@@ -59,5 +59,14 @@ public class LinkedQueue<T> implements Queue<T> {
 			next = nextNode;	
 		} // end constructor
 	} // end Node
-
+	
+	public static void main(String[] args){
+		LinkedQueue<String> a = new LinkedQueue<String>();
+		a.enqueue("1");
+		a.enqueue("2");
+		a.enqueue("3");
+		a.enqueue("4");
+		a.dequeue();
+		System.out.println(a);
+	}
 }
